@@ -40,7 +40,7 @@
         </nav>
         <div class="jumbotron" style="background:rgba(250, 250, 250, 0.658) ;">
             <h3>Disease Details</h3>
-            <div class="d-flex justify-content-end"><a href="{{ url_for('adddiseases',pid=p_id)}}" class="btn btn-success">ADD</a></div><br/>
+            <div class="d-flex justify-content-end"><a href="{{ url_for('adddiseases',pid=p_id)}}" class="waves-effect waves-light green btn z-depth-4">ADD</a></div><br/>
             <table class="table">
                     <thead class="thead-dark">
                       <tr>
@@ -55,12 +55,12 @@
                     <tbody>
                         {% for row in res %}
                       <tr>
-                        <td><b>{{ row[2] }}</b></td>
+                        <td>{{ row[2] }}</td>
                         <td>{{ row[3] }}</td>
                         <td>{{ row[4] }}</td>
-                        <td><a href="{{ url_for('patientmedication',pid=p_id,did=row[0]) }}" class="btn btn-info">View</a></td>
-                        <td><a href="{{ url_for('updatediseases',pid=p_id,did=row[0]) }}" class="btn btn-primary">Update</a></td>
-                        <td><a href="{{ url_for('deletediseases',pid=p_id,did=row[0]) }}" class="btn btn-danger">Delete</a></td>
+                        <td><a href="{{ url_for('patientmedication',pid=p_id,did=row[0]) }}" class="waves-effect teal waves-light btn z-depth-4">View</a></td>
+                        <td><a href="{{ url_for('updatediseases',pid=p_id,did=row[0]) }}" class="waves-effect  cyan swaves-light btn z-depth-4">Update</a></td>
+                        <td><a href="{{ url_for('deletediseases',pid=p_id,did=row[0]) }}" class="waves-effect waves-light red btn z-depth-4">Delete</a></td>
                       </tr>
                       {% endfor %}
                     </tbody>
