@@ -22,3 +22,5 @@ cur.execute('''create table if not exists transfusions
 
 cur.execute('''create table if not exists history
             (f_id integer primary key autoincrement,p_id number,disease text,relation text,constraint fk8 foreign key(p_id) references patient(p_id) on delete cascade)''')
+
+cur.execute('''create trigger if not exists update_img after insert on patient for each row begin update patient set image="general.png" where p_id=new.p_id and image="";end;''' )
