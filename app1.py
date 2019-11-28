@@ -28,8 +28,10 @@ def getpatientBasic():
         contact=request.form['contact']
         e_co=request.form['e_co']
         image = request.files['image']
-        filename = secure_filename(image.filename)
-        image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        filename=""
+        if image:
+            filename = secure_filename(image.filename)
+            image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         imagename=filename
         cur.execute("insert into patient values(?,?,?,?,?,?,?,?)",(p_id,name,age,sex,b_gp,contact,e_co,imagename))
         con.commit()
@@ -164,7 +166,10 @@ def patientbasic(pid):
     cur=con.cursor()
     p_id=pid
     res=cur.execute("select * from patient where p_id=(?)",(p_id,)).fetchone()
-    return render_template('patientbasic.html',res=res,p_id=pid)
+    if not res :
+        return "<h1>Aadhar number not found</h1>"
+    else :    
+        return render_template('patientbasic.html',res=res,p_id=pid)
 
 @app.route('/patient/updatebasic/<pid>',methods=['GET','POST'])
 def updatebasic(pid):

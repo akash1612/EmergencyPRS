@@ -5,9 +5,22 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Poiret+One&display=swap" rel="stylesheet">
     </head>
+    <style>
+        body {
+            background-image: url('/static/bg.png');
+            width: 100%;
+            height: 1000px;
+            background-size: cover;
+            background-position: center;
+
+        } 
+
+    </style>
     <body>
-        <nav class="navbar navbar-expand-sm bg-info navbar-dark justify-content-end">
+        <nav class="navbar navbar-expand-sm teal lighten-2 justify-content-end">
                 <ul class="navbar-nav">
                     <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('patientbasic',pid=p_id) }}">BASIC</a>
@@ -29,17 +42,22 @@
                     </li>
             </ul>
         </nav>
-        <div class="jumbotron">
-            <h3>BASIC INFO</h3><br/>
-            <h4>{{ res[1] }}</h4>
-            <h5>age:{{ res[2] }}</h5>
-            <h5>sex:{{ res[3] }}</h5>
-            <h5>blood gp:{{ res[4] }}</h5>
-            <h5>contact no:{{ res[5] }}</h5>
-            <h5>emergency contact no:{{ res[6] }}</h5><br/>
-            <img width=250px height=250px src="/static/image/{{ res[7] }}"> 
-            <a href="{{ url_for('updatebasic',pid=p_id) }}" class="btn btn-primary">Update</a>&nbsp&nbsp
-            <a href="{{ url_for('deletebasic',pid=p_id) }}" class="btn btn-danger">Delete</a>
+        <div class="card" style="font-family: 'Poiret One';widows: 5px;width:50% ;height:600px;background: rgba(255, 255, 255, 0.693); position: relative;top: 100px;left:150px">
+            <h2 style="position: relative;left: 40px;"><b>BASIC INFO</b></h2><br/>
+            <h4 style="position: relative;left: 80px;"><b>{{ res[1] }}</b></h4>
+            <h5 style="position: relative;left: 80px;"><b>age:{{ res[2] }}</b></h5>
+            <h5 style="position: relative;left: 80px;"><b>sex:{{ res[3] }}</b></h5>
+            <h5 style="position: relative;left: 80px;"><b>blood gp:{{ res[4] }}</b></h5>
+            <h5 style="position: relative;left: 80px;"><b>contact no:{{ res[5] }}</b></h5>
+            <h5 style="position: relative;left: 80px;"><b>emergency contact no:{{ res[6] }}</b></h5><br/>
+            <a href="{{ url_for('updatebasic',pid=p_id) }}" class="waves-effect waves-light btn z-depth-4" style="width: 200px;
+            position: absolute;top: 520px;left: 250 px;">Update</a>
+            <a href="{{ url_for('deletebasic',pid=p_id) }}" class=" red light  waves-effect waves-light btn z-depth-4" style="width: 200px;
+            position: absolute;top: 520px;left: 350px;">Delete</a>
+
+        </div>
+        <div class="card-imgage  z-depth-4" style="position: absolute; top: 300px;left:700px">
+            <img width=300px height=300px src="/static/image/{{ res[7] }}"> 
         </div>
     </body>
 </html>

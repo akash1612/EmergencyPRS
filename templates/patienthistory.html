@@ -6,6 +6,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">        
     </head>
+    <style>
+      body {
+          background-image: url('/static/bg.png');
+          background-size: cover;
+          background-position: center;
+
+      } 
+  </style>
     <body>
         <nav class="navbar navbar-expand-sm bg-info navbar-dark justify-content-end">
                 <ul class="navbar-nav">
@@ -29,7 +37,7 @@
                     </li>
             </ul>
         </nav>
-        <div class="jumbotron">
+        <div class="jumbotron" style="background:rgba(250, 250, 250, 0.658) ;">
             <h3>Family History</h3>
             <div class="d-flex justify-content-end"><a href="{{ url_for('addhistory',pid=p_id)}}" class="btn btn-success">ADD</a></div><br/>
             <table class="table">
