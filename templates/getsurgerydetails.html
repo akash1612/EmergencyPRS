@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">        
+    </head>
+    <body>
+       <div class="jumbotron">
+              <div class="d-flex justify-content-center"><h1>Click To Enter Surgery Specific Details:</h1></div><br/>  
+              <div class="d-flex justify-content-center"><a href="{{ url_for('getsurgerydrugs',pid=p_id,sid=s_id)}}" class="btn btn-info btn-small">Drugs Used</a></div><br/>
+              <div class="d-flex justify-content-center"><a href="/patient/login" class="btn btn-info btn-small">Reports</a></div><br/>
+              <div class="d-flex justify-content-center"><a href="{{ url_for('getdetails',pid=p_id)}}" class="btn btn-primary btn-small">Back To Menu</a></div><br/>
+        </div>
+    </body>
+</html>

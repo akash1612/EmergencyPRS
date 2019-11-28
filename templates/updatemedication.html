@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">        
+</head>
+<body>
+    <div class="jumbotron">
+        <h1>Update Medication Details:</h1>
+    <form method="POST">
+        <div class="form-group">
+          <label for="name">Medicine Name:</label>
+          <input type="text" class="form-control" id="name" name="name" value={{ res[3] }}>
+        </div>
+        <div class="form-group">
+          <label for="dose">Dose(in mg):</label>
+          <input type="text" class="form-control" id="dose" name="dose" value={{ res[4] }}>
+        </div>
+        <div class="form-group">
+            <label for="duration">Duration(in months):</label>
+            <input type="text" class="form-control" id="duration" name="duration" value={{ res[5] }}>
+        </div> 
+        <div class="form-group">
+            <label for="reaction">Reaction:</label>
+            <textarea class="form-control" rows="5" id="reaction" name="reaction">{{ res[6] }}</textarea>
+        </div>   
+        <button type="submit" class="btn btn-success">Update</button>
+    </form>
+    </div>
+</body>
+</html>

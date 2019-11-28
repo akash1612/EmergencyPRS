@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">        
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-sm bg-info navbar-dark justify-content-end">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('patientbasic',pid=p_id) }}">BASIC</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('patientdiseases',pid=p_id) }}">DISEASE</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('patientsurgeries',pid=p_id) }}">SURGERIES</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('patienttransfusions',pid=p_id) }}">TRANSFUSIONS</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('patientfamilyhistory',pid=p_id) }}">FAMILY HISTORY</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="/">LOGOUT</a>
+                    </li>
+            </ul>
+        </nav>
+        <div class="jumbotron">
+            <h3>Surgical Drugs Details</h3>
+            <div class="d-flex justify-content-end"><a href="{{ url_for('adddrugs',pid=p_id,sid=s_id)}}" class="btn btn-success">ADD</a></div><br/>
+            <table class="table">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th>Drug Name</th>
+                        <th>Dose(mg)</th>
+                        <th>Duration(months)</th>
+                        <th>Reaction</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in res %}
+                      <tr>
+                        <td>{{ row[3] }}</td>
+                        <td>{{ row[4] }}</td>
+                        <td>{{ row[5] }}</td>
+                        <td>{{ row[6] }}</td>
+                        <td><a href="{{ url_for('updatedrugs',pid=p_id,sid=s_id,sdid=row[0]) }}" class="btn btn-primary">Update</a></td>
+                        <td><a href="{{ url_for('deletedrugs',pid=p_id,sid=s_id,sdid=row[0]) }}" class="btn btn-danger">Delete</a></td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+        </div>
+
+    </body>
+</html>

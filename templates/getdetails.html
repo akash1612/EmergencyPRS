@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Poiret+One&display=swap" rel="stylesheet">
+    </head>
+    <style>
+        body {
+            background-image: url('/static/bg.png');
+            width: 100%;
+            height: 1000px;
+            background-size: cover;
+            background-position: center;
+
+        } 
+
+    </style>
+    <body>
+       <div class="card" style="width:50% ;height: 500px;background: rgba(255, 255, 255, 0.507); position: relative;top: 150px;left:500px">
+              <div class="d-flex justify-content-center"><h1 style="font-family: 'Poiret One';font-size: 60px;position: relative;left: 10px;top: 20px;">Select An Option To Enter Details:</h1></div>  
+              <div class="d-flex justify-content-center" style="position: relative;top: 30px;"><a href="{{ url_for('getdiseases',pid=p_id)}}" 
+                class="waves-effect waves-light btn z-depth-4">Diseases</a></div><br/>
+              <div class="d-flex justify-content-center" style="position: relative;top: 60px;"><a href="{{ url_for('getsurgeries',pid=p_id)}}" 
+                class="waves-effect waves-light btn z-depth-4">Surgeries</a></div><br/>
+              <div class="d-flex justify-content-center" style="position: relative;top: 90px;"><a href="{{ url_for('gettransfusions',pid=p_id)}}" 
+                class="waves-effect waves-light btn z-depth-4">Transfusions</a></div><br/>
+              <div class="d-flex justify-content-center" style="position: relative;top: 120px;"><a href="{{ url_for('getfamilyhistory',pid=p_id)}}" 
+                class="waves-effect waves-light btn z-depth-4">Family History</a></div><br/>
+              <div class="d-flex justify-content-center" style="position: relative;top: 150px;"><a href="{{ url_for('getreports',pid=p_id)}}"
+                 class="waves-effect waves-light btn    z-depth-4">Reports</a></div><br/>
+  
+        </div>
+    </body>
+</html>
