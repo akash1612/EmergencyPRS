@@ -1,6 +1,11 @@
 from flask import Flask,render_template,request,redirect,url_for
 import sqlite3 as sql
+import os
+from werkzeug.utils import secure_filename
 app=Flask(__name__)
+UPLOAD_FOLDER = 'static/image'
+#ALLOWED_EXTENSIONS = set(['jpeg', 'jpg', 'png'])
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route('/')
 def index():
@@ -11,7 +16,7 @@ def patient():
     return render_template('patient.html')
 
 @app.route('/patient/register',methods=['POST','GET'])
-def getpatientasic():
+def getpatientBasic():
     con=sql.connect('database.db')
     cur=con.cursor()
     if request.method == 'POST':
@@ -22,7 +27,11 @@ def getpatientasic():
         b_gp=request.form['b_gp']
         contact=request.form['contact']
         e_co=request.form['e_co']
-        cur.execute("insert into patient values(?,?,?,?,?,?,?)",(p_id,name,age,sex,b_gp,contact,e_co))
+        image = request.files['image']
+        filename = secure_filename(image.filename)
+        image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        imagename=filename
+        cur.execute("insert into patient values(?,?,?,?,?,?,?,?)",(p_id,name,age,sex,b_gp,contact,e_co,imagename))
         con.commit()
         return redirect(url_for('getdetails',pid=p_id))
     return render_template('register.html')

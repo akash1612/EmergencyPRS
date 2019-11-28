@@ -37,6 +37,7 @@
             <h5>blood gp:{{ res[4] }}</h5>
             <h5>contact no:{{ res[5] }}</h5>
             <h5>emergency contact no:{{ res[6] }}</h5><br/>
+            <img width=250px height=250px src="/static/image/{{ res[7] }}"> 
             <a href="{{ url_for('updatebasic',pid=p_id) }}" class="btn btn-primary">Update</a>&nbsp&nbsp
             <a href="{{ url_for('deletebasic',pid=p_id) }}" class="btn btn-danger">Delete</a>
         </div>

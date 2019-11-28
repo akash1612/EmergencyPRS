@@ -3,7 +3,7 @@ con=sql.connect('database.db')
 cur=con.cursor()
 
 cur.execute('''create table if not exists patient
-        (p_id number,name text,age number,sex text,b_gp text,contact number,e_contact number,constraint pk1 primary key(p_id))''')
+        (p_id number,name text,age number,sex text,b_gp text,contact number,e_contact number,image text,constraint pk1 primary key(p_id))''')
 
 cur.execute('''create table if not exists disease
             (d_id integer primary key autoincrement,p_id number,name text,date text,duration number,constraint fk1 foreign key(p_id) references patient(p_id) on delete cascade)''')
