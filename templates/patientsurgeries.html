@@ -16,7 +16,7 @@
       } 
   </style>
     <body>
-        <nav class="navbar navbar-expand-sm bg-info navbar-dark justify-content-end">
+        <nav class="navbar navbar-expand-sm teal lighten-2 justify-content-end">
                 <ul class="navbar-nav">
                     <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('patientbasic',pid=p_id) }}">BASIC</a>
@@ -40,7 +40,7 @@
         </nav>
         <div class="jumbotron" style="background:rgba(250, 250, 250, 0.658) ;">
             <h3>Surgery Details</h3>
-            <div class="d-flex justify-content-end"><a href="{{ url_for('addsurgeries',pid=p_id)}}" class="btn btn-success">ADD</a></div><br/>
+            <div class="d-flex justify-content-end"><a href="{{ url_for('addsurgeries',pid=p_id)}}" class="waves-effect waves-light green btn z-depth-4">ADD</a></div><br/>
             <table class="table">
                     <thead class="thead-dark">
                       <tr>
@@ -62,9 +62,9 @@
                         <td>{{ row[4] }}</td>
                         <td>{{ row[5] }}</td>
                         <td>{{ row[6] }}</td>
-                        <td><a href="{{ url_for('patientdrugs',pid=p_id,sid=row[0]) }}" class="btn btn-info">View</a></td>
-                        <td><a href="{{ url_for('updatesurgeries',pid=p_id,sid=row[0]) }}" class="btn btn-primary">Update</a></td>
-                        <td><a href="{{ url_for('deletesurgeries',pid=p_id,sid=row[0]) }}" class="btn btn-danger">Delete</a></td>
+                        <td><a href="{{ url_for('patientdrugs',pid=p_id,sid=row[0]) }}" class="waves-effect teal waves-light btn z-depth-4">View</a></td>
+                        <td><a href="{{ url_for('updatesurgeries',pid=p_id,sid=row[0]) }}" class="waves-effect  cyan swaves-light btn z-depth-4">Update</a></td>
+                        <td><a href="{{ url_for('deletesurgeries',pid=p_id,sid=row[0]) }}" class="waves-effect waves-light red btn z-depth-4">Delete</a></td>
                       </tr>
                       {% endfor %}
                     </tbody>
