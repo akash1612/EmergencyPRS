@@ -504,9 +504,73 @@ def deletehistory(pid,fid):
     con.commit()
     return redirect(url_for('patientfamilyhistory',pid=p_id))
 
-@app.route('/doctor')
+@app.route('/doctor',methods = ['GET','POST'])
 def doctor():
-    return 'DOCTOR'
+    if request.method == 'POST' :
+        p_id = request.form['p_id']
+        return redirect(url_for('viewbasic',pid=p_id))
+    return render_template('login.html')
+
+@app.route('/doctor/viewbasic/<pid>')
+def viewbasic(pid):
+    con=sql.connect('database.db')
+    cur=con.cursor()
+    p_id=pid
+    res=cur.execute("select * from patient where p_id=(?)",(p_id,)).fetchone()
+    if not res :
+        return "<h1>Aadhar number not found</h1>"
+    else :    
+        return render_template('viewbasic.html',res=res,p_id=pid)
+
+@app.route('/doctor/viewdiseases/<pid>')
+def viewdiseases(pid):
+    con=sql.connect('database.db')
+    cur=con.cursor()
+    p_id=pid
+    res=cur.execute("select * from disease where p_id=(?)",(p_id,)).fetchall()
+    return render_template('viewdiseases.html',res=res,p_id=p_id)
+
+@app.route('/doctor/viewsurgeries/<pid>')
+def viewsurgeries(pid):
+    con=sql.connect('database.db')
+    cur=con.cursor()
+    p_id=pid
+    res=cur.execute("select * from surgeries where p_id=(?)",(p_id,)).fetchall()
+    return render_template('viewsurgeries.html',res=res,p_id=p_id)
+
+@app.route('/doctor/viewtransfusions/<pid>')
+def viewtransfusions(pid):
+    con=sql.connect('database.db')
+    cur=con.cursor()
+    p_id=pid
+    res=cur.execute("select * from transfusions where p_id=(?)",(p_id,)).fetchall()
+    return render_template('viewtransfusions.html',res=res,p_id=p_id)
+
+@app.route('/doctor/viewfamilyhistory/<pid>')
+def viewfamilyhistory(pid):
+    con=sql.connect('database.db')
+    cur=con.cursor()
+    p_id=pid
+    res=cur.execute("select * from history where p_id=(?)",(p_id,))
+    return render_template('viewhistory.html',res=res,p_id=p_id)
+
+@app.route('/doctor/viewmedications/<pid>/<did>')
+def viewmedications(pid,did):
+    con=sql.connect('database.db')
+    cur=con.cursor()
+    p_id=pid
+    d_id=did
+    res=cur.execute("select * from medication where d_id=(?)",(d_id)).fetchall()
+    return render_template('viewmedication.html',res=res,p_id=p_id,d_id=d_id)
+
+@app.route('/doctor/viewdrugs/<pid>/<sid>')
+def viewdrugs(pid,sid):
+    con=sql.connect('database.db')
+    cur=con.cursor()
+    p_id=pid
+    s_id=sid
+    res=cur.execute("select * from drugs where s_id=(?)",(s_id)).fetchall()
+    return render_template('viewdrugs.html',res=res,p_id=p_id,s_id=s_id)
 
 if __name__=="__main__":
     app.run(debug=True)

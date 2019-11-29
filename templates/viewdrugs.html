@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">        
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-sm teal lighten-2 justify-content-end">
+                <ul class="navbar-nav">
+                    <a class="nav-link" href="{{ url_for('viewbasic',pid=p_id) }}">BASIC</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('viewdiseases',pid=p_id) }}">DISEASE</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('viewsurgeries',pid=p_id) }}">SURGERIES</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('viewtransfusions',pid=p_id) }}">TRANSFUSIONS</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('viewfamilyhistory',pid=p_id) }}">FAMILY HISTORY</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="/">LOGOUT</a>
+                    </li>
+            </ul>
+        </nav>
+        <div class="jumbotron">
+            <h3>Surgical Drugs Details</h3>
+            
+            <table class="table">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th>Drug Name</th>
+                        <th>Dose(mg)</th>
+                        <th>Duration(months)</th>
+                        <th>Reaction</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in res %}
+                      <tr>
+                        <td>{{ row[3] }}</td>
+                        <td>{{ row[4] }}</td>
+                        <td>{{ row[5] }}</td>
+                        <td>{{ row[6] }}</td>
+                   </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+        </div>
+
+    </body>
+</html>
