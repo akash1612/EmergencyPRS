@@ -59,8 +59,8 @@
                         <td>{{ row[4] }}</td>
                         <td>{{ row[5] }}</td>
                         <td>{{ row[6] }}</td>
-                        <td><a href="{{ url_for('updatemedication',pid=p_id,did=d_id,mid=row[0]) }}" class="btn btn-primary">Update</a></td>
-                        <td><a href="{{ url_for('deletemedication',pid=p_id,did=d_id,mid=row[0]) }}" class="btn btn-danger">Delete</a></td>
+                        <td><a href="{{ url_for('updatemedication',pid=p_id,did=d_id,mid=row[0]) }}" class="waves-effect  cyan swaves-light btn z-depth-4">Update</a></td>
+                        <td><a href="{{ url_for('deletemedication',pid=p_id,did=d_id,mid=row[0]) }}" class="waves-effect waves-light red btn z-depth-4">Delete</a></td>
                       </tr>
                       {% endfor %}
                     </tbody>

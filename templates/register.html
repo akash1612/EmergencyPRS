@@ -25,31 +25,35 @@
     <form method="POST" enctype="multipart/form-data">
         <div class="form-group" style="width: 50%;position: relative;left: 320px;top: 30px;">
           <label for="p_id">aadhar no:</label>
-          <input type="text" class="form-control" id="p_id" name="p_id">
+          <input type="text" class="form-control" id="p_id" name="p_id" required>
         </div>
         <div class="form-group" style="width: 50%;position: relative;left: 320px;top: 30px;">
           <label for="name">Name:</label>
-          <input type="text" class="form-control" id="name" name="name">
+          <input type="text" class="form-control" id="name" name="name" required>
         </div>
         <div class="form-group" style="width: 50%;position: relative;left: 320px;top: 30px;">
             <label for="age">Age:</label>
-            <input type="text" class="form-control" id="age" name="age">
+            <input type="number" class="form-control" id="age" name="age" required>
         </div>
         <div class="form-group" style="width: 50%;position: relative;left: 320px;top: 30px;">
             <label for="sex">sex:</label>
-            <input type="text" class="form-control" id="sex" name="sex">
+            <select name="sex" id="name" class="custom-select" required>
+                <option value="male">Male</option>
+                <option value="female">Femlae</option>
+                <option value="others">Others</option>
+            </select> 
         </div>
         <div class="form-group" style="width: 50%;position: relative;left: 320px;top: 30px;">
             <label for="b_gp">Blood Group:</label>
-            <input type="text" class="form-control" id="b_gp" name="b_gp">
+            <input type="text" class="form-control" id="b_gp" name="b_gp" required>
         </div>
         <div class="form-group" style="width: 50%;position: relative;left: 320px;top: 30px;"> 
             <label for="contact">Contact:</label>
-            <input type="text" class="form-control" id="contact" name="contact">
+            <input type="number" class="form-control" id="contact" name="contact" required>
         </div>
         <div class="form-group" style="width: 50%;position: relative;left: 320px;top: 30px;">
             <label for="e_con">Emergency Contact:</label>
-            <input type="text" class="form-control" id="e_co" name="e_co">
+            <input type="number" class="form-control" id="e_co" name="e_co" required>
         </div>       
         <div class="form-group" style="width: 50%;position: relative;left: 320px;top: 30px;">
             <label for="file">Upload Image</label>
