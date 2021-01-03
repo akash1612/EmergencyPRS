@@ -307,7 +307,15 @@ def patientsurgeries(pid):
     cur=con.cursor()
     p_id=pid
     res=cur.execute("select * from surgeries where p_id=(?)",(p_id,)).fetchall()
-    return render_template('patientsurgeries.html',res=res,p_id=p_id)
+    # print(res)
+    time={}
+    i=0
+    for t in res:
+        # print(t)
+        time[i]=t[6]
+        i+=1
+    print(time)
+    return render_template('patientsurgeries.html',res=res,p_id=p_id,time=time)
 
 @app.route('/patient/addsurgeries/<pid>',methods=['GET','POST'])
 def addsurgeries(pid):

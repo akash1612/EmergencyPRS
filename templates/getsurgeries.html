@@ -20,14 +20,14 @@
 </style>
 <body>
     <div class="jumbotron" style="background:rgba(250, 250, 250, 0.658) ;">
-        <h1>Enter Details Of Any Previous Surgery:</h1>
+        <h1>Enter Details Of Medicine:</h1>
     <form method="POST">
         <div class="form-group">
-          <label for="part">Body Part:</label>
+          <label for="part">Namr Of Medicine:</label>
           <input type="text" class="form-control" id="part" name="part">
         </div>
         <div class="form-group">
-          <label for="type">Surgery Type:</label>
+          <label for="type">Type Of Surgery:</label>
           <input type="text" class="form-control" id="type" name="type">
         </div>
         <div class="form-group">
@@ -39,8 +39,8 @@
             <input type="date" class="form-control" id="date" name="date">
         </div>
         <div class="form-group">
-            <label for="recovery">Recovery Time(in months):</label>
-            <input type="text" class="form-control" id="recovery" name="recovery">
+            <label for="recovery">Time Of Medicine:</label>
+            <input type="time" class="form-control" id="recovery" name="recovery">
         </div>   
         <button type="submit" class="btn btn-info">Submit</button>
     </form>

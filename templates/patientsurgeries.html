@@ -15,7 +15,27 @@
 
       } 
   </style>
-    <body>a
+  <script>
+    function showTime(){
+      alert("Time to take the medicine");
+    }
+    var d = new Date();
+    var df = new Date();
+    // alert('{{time[0]}}');
+    time = '{{time|tojson}}';
+    time=JSON.parse(time);
+    // console.log(time);
+    cur_h=d.getHours();
+    cur_m=d.getSeconds();
+    for(t in time){
+      d_in_h=parseInt(time[t].substring(0,2))-d.getHours();
+      d_in_m=parseInt(time[t].substring(3))-d.getMinutes();
+      if(d_in_h<0 ||d_in_m<0) continue;
+      setTimeout(showTime,d_in_h*3600000+d_in_m*60000-d.getSeconds()*1000);
+      // setTimeout(showTime,1000);
+    }
+  </script>
+    <body>
         <nav class="navbar navbar-expand-sm teal lighten-2 justify-content-end">
                 <ul class="navbar-nav">
                     <li class="nav-item">
@@ -25,7 +45,7 @@
                     <a class="nav-link" href="{{ url_for('patientdiseases',pid=p_id) }}">DISEASE</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('patientsurgeries',pid=p_id) }}">SURGERIES</a>
+                    <a class="nav-link" href="{{ url_for('patientsurgeries',pid=p_id) }}">MEDICINES</a>
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('patienttransfusions',pid=p_id) }}">TRANSFUSIONS</a>
@@ -39,17 +59,16 @@
             </ul>
         </nav>
         <div class="jumbotron" style="background:rgba(250, 250, 250, 0.658) ;">
-            <h3>Surgery Details</h3>
+            <h3>Medicine History</h3>
             <div class="d-flex justify-content-end"><a href="{{ url_for('addsurgeries',pid=p_id)}}" class="waves-effect waves-light green btn z-depth-4">ADD</a></div><br/>
             <table class="table">
                     <thead class="thead-dark">
                       <tr>
-                        <th>Body Part</th>
+                        <th>Medicine Name</th>
                         <th>Type</th>
                         <th>Purpose</th>
                         <th>Date</th>
-                        <th>Recovery Time</th>
-                        <th>Drugs</th>
+                        <th>Time</th>
                         <th>Update</th>
                         <th>Delete</th>
                       </tr>
@@ -62,7 +81,6 @@
                         <td>{{ row[4] }}</td>
                         <td>{{ row[5] }}</td>
                         <td>{{ row[6] }}</td>
-                        <td><a href="{{ url_for('patientdrugs',pid=p_id,sid=row[0]) }}" class="waves-effect teal waves-light btn z-depth-4">View</a></td>
                         <td><a href="{{ url_for('updatesurgeries',pid=p_id,sid=row[0]) }}" class="waves-effect  cyan swaves-light btn z-depth-4">Update</a></td>
                         <td><a href="{{ url_for('deletesurgeries',pid=p_id,sid=row[0]) }}" class="waves-effect waves-light red btn z-depth-4">Delete</a></td>
                       </tr>
